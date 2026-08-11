@@ -3,17 +3,14 @@ Paste these into Firebase Console > Firestore Database > Rules, then click Publi
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /rotationPlanner/{document=**} {
-      allow read, write: if request.auth != null;
-    }
-    match /chiefStewardessRotation/{document=**} {
-      allow read, write: if request.auth != null;
-    }
-    match /captainsRotation/{document=**} {
-      allow read, write: if request.auth != null;
-    }
+    match /rotationPlanner/{document=**} { allow read, write: if request.auth != null; }
+    match /chiefStewardessRotation/{document=**} { allow read, write: if request.auth != null; }
+    match /captainsRotation/{document=**} { allow read, write: if request.auth != null; }
+    match /chiefEngineerRotation/{document=**} { allow read, write: if request.auth != null; }
+    match /headChefRotation/{document=**} { allow read, write: if request.auth != null; }
+    match /secondEngineerRotation/{document=**} { allow read, write: if request.auth != null; }
+    match /vesselEvents/{document=**} { allow read, write: if request.auth != null; }
   }
 }
 
-This keeps Chief Officer, Chief Stewardess and Captains planner data in separate Firestore paths.
-Only signed-in Firebase Authentication users can read or edit the planners.
+The vesselEvents path is the single shared vessel-event feed used by every planner and the desktop overview.
