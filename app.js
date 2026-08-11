@@ -398,7 +398,8 @@ import {
 
   function renderSummary() {
     const contractBody = $('contractSummaryBody');
-    const contracts = [contractTotal('D', viewYear), contractTotal('E', viewYear)];
+    const contractStartYear = viewYear - 1;
+    const contracts = [contractTotal('D', contractStartYear), contractTotal('E', contractStartYear)];
     contractBody.innerHTML = contracts.map((c, i) => {
       const varianceClass = c.variance > 0 ? 'over' : c.variance < 0 ? 'under' : 'even';
       const varianceText = c.completeThroughEnd ? signedNumber(c.variance) : `${signedNumber(c.variance)}*`;
